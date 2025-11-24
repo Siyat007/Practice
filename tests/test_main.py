@@ -1,5 +1,5 @@
 import pytest
-from src.main import Calculator, process_numbers   # change 'app' to your filename
+from src.main import Calculator, process_numbers   
 
 
 def test_add():
