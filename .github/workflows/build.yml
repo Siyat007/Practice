@@ -31,5 +31,10 @@ jobs:
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v2
         env:
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=siyat007
+            -Dsonar.projectKey=Siyat007_Practice
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+            
