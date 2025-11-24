@@ -28,7 +28,7 @@ jobs:
         run: |
           pytest --cov=. --cov-report xml
 
-      - name: SonarQube Scan
+      - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -36,5 +36,5 @@ jobs:
           args: >
             -Dsonar.organization=siyat007
             -Dsonar.projectKey=Siyat007_Practice
+            -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.python.coverage.reportPaths=coverage.xml
-            
