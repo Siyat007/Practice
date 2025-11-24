@@ -3,12 +3,13 @@ from typing import List
 
 logging.basicConfig(level=logging.INFO)
 
+
 class Calculator:
     """A simple calculator class for demonstration."""
-    
+
     def add(self, a: float, b: float) -> float:
         return a + b
-    
+
     def divide(self, a: float, b: float) -> float:
         if b == 0:
             logging.error("Division by zero attempted")
@@ -28,10 +29,14 @@ def process_numbers(numbers: List[int]) -> int:
     for num in numbers:
         if num % 2 == 0:
             total += num
-    
+
     return total
 
 
+# -----------------------------
+# EXCLUDED FROM COVERAGE
+# -----------------------------
+# pragma: no cover
 def main():
     logging.info("Application started")
 
@@ -54,5 +59,6 @@ def main():
     logging.info("Application finished")
 
 
+# pragma: no cover
 if __name__ == "__main__":
     main()
