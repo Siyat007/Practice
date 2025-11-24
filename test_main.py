@@ -1,5 +1,5 @@
 import pytest
-from main import Calculator, process_numbers
+from src.main import Calculator, process_numbers
 
 
 def test_add():
