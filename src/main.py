@@ -36,13 +36,11 @@ def process_numbers(numbers: List[int]) -> int:
 # -----------------------------
 # EXCLUDED FROM COVERAGE
 # -----------------------------
-# pragma: no cover
-def main():
+def main():  # pragma: no cover
     logging.info("Application started")
 
     calc = Calculator()
 
-    # Sample operations
     result1 = calc.add(10, 20)
     logging.info(f"Addition result: {result1}")
 
@@ -59,6 +57,6 @@ def main():
     logging.info("Application finished")
 
 
-# pragma: no cover
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()
+
