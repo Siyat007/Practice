@@ -1,4 +1,4 @@
-name: Python SonarQube Analysis
+name: Python SonarCloud Analysis
 
 on:
   push:
@@ -23,20 +23,23 @@ jobs:
         run: |
           pip install -r requirements.txt || true
           pip install pytest pytest-cov
-      - name: Add src to PYTHONPATH
-        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
+
+      - name: Add project root to PYTHONPATH
+        run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
       - name: Run Tests with Coverage
-        run: |
-          pytest --cov=src --cov-report=xml:coverage.xml
+        run: pytest --cov=src --cov-report=xml:coverage.xml
+
+      - name: Verify coverage file exists
+        run: ls -l coverage.xml
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v2
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
             -Dsonar.organization=siyat007
             -Dsonar.projectKey=Siyat007_Practice
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.python.coverage.reportPaths=coverage.xml
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
